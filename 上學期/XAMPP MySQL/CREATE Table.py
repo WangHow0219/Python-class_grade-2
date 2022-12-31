@@ -10,3 +10,5 @@ SQL="CREATE TABLE IF NOT EXISTS users(id INT(5) \
 
 print('SQL:',cursor.execute(SQL))
 conn.commit()
+cursor.close()
+conn.close()
