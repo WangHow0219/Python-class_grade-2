@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>社群</title>
+</head>
+<body>
+    <h1>社群</h1>
+
+    <h2>發表新帖子</h2>
+
+    <form action="/create_post" method="POST">
+        <label for="title">標題：</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="content">內文：</label>
+        <textarea id="content" name="content" required></textarea><br><br>
+
+        <label for="favorite">分享收藏：</label>
+        <select id="favorite" name="favorite">
+            <option value="">請選擇收藏</option>
+            <option value="收藏1">收藏1</option>
+            <option value="收藏2">收藏2</option>
+            <option value="收藏3">收藏3</option>
+        </select><br><br>
+
+        <button type="submit">發表</button>
+    </form>
+
+    <h2>帖子列表</h2>
+
+    <ul id="postList">
+        <!-- 這裡顯示帖子列表 -->
+    </ul>
+
+    <a href="/">回到首頁</a>
+
+    <script>
+        // 可以使用 JavaScript 程式碼來動態新增帖子到列表
+
+        // 新增帖子到列表
+        function addPost(title, content, favorite) {
+            var postList = document.getElementById("postList");
+            var li = document.createElement("li");
+            var titleElem = document.createElement("h3");
+            var contentElem = document.createElement("p");
+            var favoriteElem = document.createElement("p");
+
+            titleElem.innerText = title;
+            contentElem.innerText = content;
+            favoriteElem.innerText = "分享收藏：" + favorite;
+
+            li.appendChild(titleElem);
+            li.appendChild(contentElem);
+            li.appendChild(favoriteElem);
+
+            postList.appendChild(li);
+        }
+    </script>
+</body>
+</html>

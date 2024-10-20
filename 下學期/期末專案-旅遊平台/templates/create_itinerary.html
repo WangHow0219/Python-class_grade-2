@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>創建行程包</title>
+</head>
+<body>
+    <h1>創建行程包</h1>
+
+    <form action="/save_itinerary" method="POST">
+        <label for="title">標題：</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="description">簡介：</label>
+        <textarea id="description" name="description" required></textarea><br><br>
+
+        <h2>編輯行程</h2>
+        <table id="itineraryTable">
+            <thead>
+                <tr>
+                    <th>商品類別</th>
+                    <th>商品名稱</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 這裡顯示行程包清單 -->
+            </tbody>
+        </table>
+
+        <h2>使用者收藏清單</h2>
+        <label for="category">商品類別：</label>
+        <select id="category" name="category">
+            <option value="flights">機票</option>
+            <option value="accommodations">住宿</option>
+            <option value="attractions">景點</option>
+            <option value="itineraries">行程包</option>
+        </select><br><br>
+
+        <table id="favoritesTable">
+            <thead>
+                <tr>
+                    <th>商品類別</th>
+                    <th>商品名稱</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 這裡顯示使用者收藏清單 -->
+            </tbody>
+        </table>
+
+        <button type="submit">儲存行程包</button>
+    </form>
+
+    <a href="/">回到首頁</a>
+
+    <script>
+        // 可以使用 JavaScript 程式碼來動態新增和刪除行程包清單和使用者收藏清單的項目
+        // 這裡提供一些示範程式碼供你參考
+        // 你可以根據實際情況進行調整和擴充
+
+        // 新增行程包項目到表格
+        function addItineraryItem(category, name) {
+            var table = document.getElementById("itineraryTable").getElementsByTagName('tbody')[0];
+            var row = table.insertRow();
+            var categoryCell = row.insertCell(0);
+            var nameCell = row.insertCell(1);
+            var removeCell = row.insertCell(2);
+
+            categoryCell.innerHTML = category;
+            nameCell.innerHTML = name;
+            removeCell.innerHTML = '<button onclick="removeItineraryItem(this)">刪除</button>';
+        }
+
+        // 刪除行程包項目
+        function removeItineraryItem(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        // 新增使用者收藏項目到表格
+        function addToFavorites(category, name) {
+            var table = document.getElementById("favoritesTable").getElementsByTagName('tbody')[0];
+            var row = table.insertRow();
+            var categoryCell = row.insertCell(0);
+            var nameCell = row.insertCell(1);
+            var addCell = row.insertCell(2);
+
+            categoryCell.innerHTML = category;
+            nameCell.innerHTML = name;
+            addCell.innerHTML = '<button onclick="addToItinerary(this)">新增到行程</button>';
+        }
+
+        // 新增使用者收藏項目到行程包
+        function addToItinerary(button) {
+            var row = button.parentNode.parentNode;
+            var category = row.cells[0].innerHTML;
+            var name = row.cells[1].innerHTML;
+            addItineraryItem(category, name);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKBOX歌單系統-修改歌曲</title>
+<style>
+    th {
+        background-color: #00BFFF;
+        color: black;
+    }
+    .main {
+        width: 80%;
+        margin: 20px auto;
+    }
+    table {
+      border-spacing: 0;
+    }
+    th {
+      padding: 10px;
+    }
+    table tr:nth-child(odd){
+      background-color: #eee
+    }
+    table th:first-child {
+      border-radius: 15px 0 0 0;
+    }
+    table th:last-child {
+      border-radius: 0 15px 0 0;
+    }
+    table tr:last-child td:first-child {
+      border-radius: 0 0 0 15px;
+    }
+    table tr:last-child td:last-child {
+      border-radius: 0 0 15px 0;
+    }
+    .UpdateBox{
+        
+        font-size: 20px;
+    }
+    .textbox{
+        background:rgb(231, 231, 231);
+        border:0 none;
+        border-radius: 8px;
+        outline: 0px;
+        width: 540px; height: 30px;
+        font-size: 18px;color: rgb(0, 0, 0);        
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .OKBut{
+        border-radius: 8px;
+        outline: 1px;
+        background-color: #87CEFA;
+        width: 70px; height: 40px;
+        font-size: 18px;
+    }
+    .img{
+      border-radius: 20px;
+    }
+
+</style>
+</head>
+<body>
+<center>
+    <h1>--------修改歌曲資訊--------</h1>
+    <img class="img" src="{{result[0][5]}}" width="300"><br><br>
+    -------------------------------------------------------------------
+    {% if result != undefined %}
+        <div class="UpdateBox">
+            <form action="/DoUpd" method="post"><br>
+                歌名 : <input class="textbox" type="text" name="new_song" value="{{result[0][2]}}"/><br><br>
+                藝人 : <input class="textbox" type="text" name="new_artist" value="{{result[0][3]}}"/><br><br>
+                <input class="textbox" type="hidden" name="theUpdID" value="{{result[0][0]}}">
+                <input class="OKBut" type="submit" value="儲存"/>
+            </form>
+        </div>   
+    {% endif %}
+</center>
+</body>
+</html>

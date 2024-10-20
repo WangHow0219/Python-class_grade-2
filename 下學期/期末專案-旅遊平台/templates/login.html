@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登入</title>
+</head>
+<body>
+    <h1>登入</h1>
+    <form method="POST" action="/login">
+        <label for="userId">帳號(電話號碼):</label>
+        <input type="text" id="userId" name="userId" required>
+        <br>
+        <label for="password">密碼:</label>
+        <input type="password" id="password" name="password" required>
+            <div class="flashMessage">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class=flashes>
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        <br>
+        <input type="submit" value="登入">
+    </form>
+    <p>還沒有帳號？<a href="/register">點此註冊</a></p>
+    <a href="/">回到首頁</a>
+</body>
+</html>

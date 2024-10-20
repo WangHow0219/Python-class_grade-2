@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>搜尋比價</title>
+</head>
+<body>
+    <h1>搜尋比價</h1>
+    <a href="/">回到首頁</a>
+    <br><br>
+    <form method="POST" action="/doSearch">
+        <label for="keywords">關鍵字：</label>
+        <input type="text" name="keywords" value="{{inp_keywords}}" class="textbox">
+        <br>
+        <label for="date">日期：</label>
+        <input type="date" id="date" name="date">
+        <br>
+        <label for="location">地區：</label>
+        <input type="text" id="location" name="location">
+        <br>
+        <label for="category">商品類別：</label>
+        <select id="category" name="category">
+            <option value="機票">機票</option>
+            <option value="住宿">住宿</option>
+            <option value="景點">景點</option>
+            <option value="行程包">行程包</option>
+        </select>
+        <br>
+        <input type="submit" value="搜尋">
+    </form>
+    ================================================
+    <h2>{{category}} 搜尋結果</h2>
+    <table>
+        <table style="font-size:18px">
+            <tr>
+                <th>照片</th>
+                <th>商品名稱</th>
+                <th>基本資訊</th>
+                <th>價格</th>
+            </tr>
+        {% if id_list != undefined %}   
+            {% for i in range(0, len_list) %}
+                <tr>
+                    <td><img src="{{img_list[i]}}" width="80"></td>
+                    <td style="width:350px"><a href="{{url_list[i]}}">{{_list[i]}}</a></td>
+                    <td style="width:250px">{{_list[i]}}</td>
+                    <td style="width:250px">{{_list[i]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </table>
+    
+</body>
+</html>

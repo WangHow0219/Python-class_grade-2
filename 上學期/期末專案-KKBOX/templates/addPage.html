@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKBOX歌單系統-新增歌曲</title>
+<style>
+    th {
+        background-color: #00BFFF;
+        color: black;
+    }
+    .main {
+        width: 80%;
+        margin: 20px auto;
+    }
+    table {
+      border-spacing: 0;
+    }
+    th {
+      padding: 10px;
+    }
+    table tr:nth-child(odd){
+      background-color: #eee
+    }
+    table th:first-child {
+      border-radius: 15px 0 0 0;
+    }
+    table th:last-child {
+      border-radius: 0 15px 0 0;
+    }
+    table tr:last-child td:first-child {
+      border-radius: 0 0 0 15px;
+    }
+    table tr:last-child td:last-child {
+      border-radius: 0 0 15px 0;
+    }
+    .SelectBox {
+        position: fixed;
+        right: 0;
+    }
+    .textbox{
+        background:rgb(231, 231, 231);
+        border:0 none;
+        border-radius: 8px;
+        outline: 0px;
+        width: 480px; height: 30px;
+        font-size: 16px;color: rgb(0, 0, 0);        
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .button{
+        border-radius: 10px;
+        outline: 1px;
+        font-size: 20px;color: rgb(0, 0, 0);        
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .InsertBox{
+        font-size: 18px;
+    }
+    .OKBut{
+        border-radius: 8px;
+        outline: 1px;
+        background-color: #87CEFA;
+        width: 70px; height: 40px;
+        font-size: 18px;
+    }
+    .flashMessage{
+        color: red;
+    }
+
+</style>
+</head>
+<body>
+<center>
+    <h1>--------新增歌曲--------</h1>
+    <img src="https://i.kfs.io/muser/global/118660154v4/cropresize/300x300.jpg" width="150"><br><br>
+    <div class="InsertBox">
+        <form action="/DoAdd" method="post">
+            輸 入 ID : <input class="textbox" type="text" name="new_id" value=""/><br><br>
+            輸入歌名 : <input class="textbox" type="text" name="new_song" value="{{new_song}}"/><br><br>
+            輸入藝人 : <input class="textbox" type="text" name="new_artist" value="{{new_artist}}"/><br><br>
+            <input class="OKBut" type="submit" value="新增"/>
+        </form>
+        <div class="flashMessage">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</center>
+</body>
+</html>

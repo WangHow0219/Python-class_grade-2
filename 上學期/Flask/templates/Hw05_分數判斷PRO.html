@@ -1,0 +1,63 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡易分數判斷</title>
+    <style>
+        body{background-color: rgb(165, 151, 132);}
+        .bigbox{
+            border: saddlebrown 10px double;border-radius: 50px;
+            max-width: 400px;
+            padding: 30px;margin-top: 80px;
+            background-color: rgb(199, 187, 177);
+        }
+        .input-box{
+            width: 200px;height: 30px;
+            font-size: 20px;
+            border-radius: 10px;
+            border: none;
+        }
+        .button{
+            width: 70px;height: 40px;
+            border-radius: 10px;border: none;
+            background-color: rgb(191, 255, 191);
+            font-weight: bold;font-size: 17px;
+        }
+        #S{
+            border: rgb(230, 221, 108) 5px solid;
+            background-color: rgb(248, 182, 0);
+        }
+    </style>
+    <script>
+        function F1(a){
+            var a = document.getElementById("score")
+            var X = parseInt(a.value)
+            if (X <= 100 && X >= 0);
+            else
+                document.write("<center><h1 class=show>錯誤!請重新輸入</h1></center>");
+            if (X >= 90 && X <= 100)
+                document.write("<center><h1>優等!</h1></center>");
+            else if (X < 90 && X >= 80)
+                document.write("<center><h1>甲等!</h1></center>");
+            else if (X < 80 && X >= 70)
+                document.write("<center><h1>乙等</h1></center>");
+            else if (X < 70 && X >= 60)
+                document.write("<center><h1>丙等</h1></center>");
+            else if (X < 60 && X >= 0)
+                document.write("<center><h1>!不及格!</h1></center>");
+        }
+    </script>
+</head>
+<body>
+    <center>
+    <div class="bigbox">
+        <h1>簡易成績等級判斷</h1><br>
+        <div>
+            輸入成績 : <input class="input-box" id="score" type="number">
+        </div><br>
+        <button class="button" onclick="F1()">送出</button>
+    </div>
+</body>
+</html>

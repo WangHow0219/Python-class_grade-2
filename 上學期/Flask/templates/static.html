@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Static - Page</title>
+</head>
+<body>
+        <h1>C110156246 王皓</h1>
+        <button id="btnHello" onClick="sayHello()">~點我~</button>
+        <!-- <script src="../static/script.js"></script> -->
+        <script type = "text/javascript" 
+         src = "{{ url_for('static', filename = 'script.js') }}" ></script>
+</body>
+</html>
